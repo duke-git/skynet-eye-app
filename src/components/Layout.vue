@@ -101,7 +101,6 @@ const menuList = reactive([
     :deep(.el-aside) {
         width: auto;
         background-color: #fff;
-        // border-right: 1px solid #e4e7ed;
 
         .aside-box {
             display: flex;
@@ -126,16 +125,14 @@ const menuList = reactive([
                 border-top: 1px solid #e4e7ed;
 
                 .logo-img {
-                    width: 50px;
-                    height: 40px;
-                    margin-right: 6px;
-                    vertical-align: text-bottom;
+                    vertical-align: middle;
                 }
 
                 .logo-text {
                     font-size: 24px;
                     color: #303133;
                     font-weight: bold;
+                    vertical-align: middle;
                 }
             }
         }
