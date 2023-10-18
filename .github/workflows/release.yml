@@ -1,12 +1,11 @@
 # 可选，将显示在 GitHub 存储库的“操作”选项卡中的工作流名称
-name: Release CI
+name: Release
  
 # 指定此工作流的触发器
 on:
   push:
-    # 匹配特定标签 (refs/tags)
-    tags:
-      - 'v*' # 推送事件匹配 v*, 例如 v1.0，v20.15.10 等来触发工作流
+    branches:
+      - master
  
 # 需要运行的作业组合
 jobs:
@@ -101,6 +100,6 @@ jobs:
         run: yarn && yarn release
       - uses: tauri-apps/tauri-action@v0.3
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           releaseId: ${{ needs.create-release.outputs.RELEASE_UPLOAD_ID }}
