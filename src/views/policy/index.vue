@@ -3,7 +3,6 @@
         <div class="title-content">
             <span class="page-title">政策收集</span>
         </div>
-
         <div class="policy-content">
             <div class="search-content" style="">
                 <span class="search-item">
@@ -18,15 +17,12 @@
                         value-format="YYYY-MM-DD" @change="getPolicy()" />
                 </span>
             </div>
-
             <el-table :data="policyData" stripe style="width: 100%">
                 <el-table-column prop="date" label="时间" width="140" />
                 <el-table-column prop="department" label="颁布单位" width="220" />
-
                 <el-table-column prop="title" label="政策标题" width="220">
                     <template #default="scope">
-                        <el-link type="primary" :href="scope.row.url" target="_blank">{{ scope.row.title
-                        }}</el-link>
+                        <el-link type="primary" :href="scope.row.url" target="_blank">{{ scope.row.title }}</el-link>
                     </template>
                 </el-table-column>
                 <el-table-column prop="summary" label="总结" />

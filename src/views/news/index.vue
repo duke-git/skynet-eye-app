@@ -216,10 +216,9 @@
 
 <script setup name="news">
 import { ref, onMounted } from 'vue';
+
 import { Headset, Setting } from '@element-plus/icons-vue'
-
 import { ElMessage } from 'element-plus';
-
 import AudioPlayer from '@liripeng/vue-audio-player';
 
 import AiBot from "@/components/AiBot.vue";
@@ -238,7 +237,7 @@ let newsItem9 = ref({ summary: "" });
 
 let tags = ref([
     { id: "xx", names: 'tag1' },
-])
+]);
 
 let audioList = ref([]);
 
@@ -288,10 +287,10 @@ let tag = ref({
 })
 
 const handleTagDelete = (tagId, name) => {
-    deleteNewsTag().then(({
+    deleteNewsTag({
         id: tagId,
         name: name
-    }) => {
+    }).then(() => {
         if (res.code == 200) {
             ElMessage({
                 message: '删除成功',
@@ -321,13 +320,12 @@ const setTag = () => {
 
 const audioPlayer = ref(null);
 const player = ref(null);
-let currentAudioName = ref('');
 
+let currentAudioName = ref('');
 const handleBeforePlay = (next) => {
     currentAudioName.value = audioList.value[audioPlayer.value.currentPlayIndex].name;
-    next() // 开始播放
+    next()
 }
-
 const playVideo = () => {
     player.value.scrollIntoView({ behavior: 'smooth' });
     audioPlayer.value.play();

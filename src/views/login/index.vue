@@ -7,7 +7,6 @@
             </div>
             <div class="login-form">
                 <div class="login-logo">
-                    <!-- <img class="login-icon" src="@/assets/images/app_logo.png" alt="" /> -->
                     <h2 class="logo-text">系统登陆</h2>
                 </div>
                 <LoginForm />
