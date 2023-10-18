@@ -1,0 +1,31 @@
+{
+  "name": "skynet-eye-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@liripeng/vue-audio-player": "^1.5.2",
+    "@tauri-apps/api": "^1.4.0",
+    "axios": "^1.5.1",
+    "echarts": "^5.4.3",
+    "echarts-wordcloud": "^2.1.0",
+    "element-plus": "^2.3.14",
+    "screenfull": "^6.0.2",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.4.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "sass": "^1.67.0",
+    "unplugin-auto-import": "^0.16.6",
+    "unplugin-vue-components": "^0.25.2",
+    "vite": "^4.4.4"
+  }
+}
