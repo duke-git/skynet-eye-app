@@ -41,7 +41,6 @@ const router = useRouter();
 
 onMounted(() => {
     username.value = localStorage.getItem("username");
-    console.log("username", username);
     // screenfull.on("change", () => {
     //     if (screenfull.isFullscreen) isFullscreen.value = true;
     //     else isFullscreen.value = false;
