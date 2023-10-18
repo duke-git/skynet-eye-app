@@ -16,9 +16,10 @@
                                         newsItem1.title
                                     }}</el-link>
                                     <div class="key-word" v-if="newsItem1.keyword">
-                                        <span v-for="(item) in newsItem1.keyword.split('，')">{{ "#" + item + " " }}</span>
+                                        <span v-for="item in newsItem1.keyword.split('，')">{{ "#" + item + " " }}</span>
                                     </div>
-                                    <img :src="newsItem1.imageUrl" align="left" style="width: 200px;height: 200px;" />
+                                    <img :src="newsItem1.imageUrl" align="left"
+                                        style="width: 200px;height: 200px;margin-right: 10px;" />
                                     <span class="summary">{{ newsItem1.summary }}</span>
                                 </div>
                             </el-card>
@@ -32,10 +33,10 @@
                                         newsItem9.title
                                     }}</el-link>
                                     <div class="key-word" v-if="newsItem9.keyword">
-                                        <span v-for="(   item   ) in    newsItem9.keyword.split('，')   ">{{ "#" + item + " "
-                                        }}</span>
+                                        <span v-for="item in newsItem9.keyword.split('，')">{{ "#" + item + " " }}</span>
                                     </div>
-                                    <img :src="newsItem9.imageUrl" align="left" style="width: 200px;height: 200px;" />
+                                    <img :src="newsItem9.imageUrl" align="left"
+                                        style="width: 200px;height: 200px;margin-right: 10px;" />
                                     <span class="summary">{{ newsItem9.summary }}</span>
                                 </div>
                             </el-card>
@@ -48,8 +49,7 @@
                             <el-link type="primary" :href="newsItem2.url" class="title" target="_blank">{{ newsItem2.title
                             }}</el-link>
                             <div class="key-word" v-if="newsItem2.keyword">
-                                <span v-for="(   item   ) in    newsItem2.keyword.split('，')   ">{{ "#" + item + " "
-                                }}</span>
+                                <span v-for="item in newsItem2.keyword.split('，')">{{ "#" + item + " " }}</span>
                             </div>
                             <img :src="newsItem2.imageUrl" align="left" class="news-image" />
                             <span class="summary">{{ newsItem2.summary }}</span>
@@ -65,8 +65,7 @@
                                         newsItem3.title
                                     }}</el-link>
                                     <div class="key-word" v-if="newsItem3.keyword">
-                                        <span v-for="(   item   ) in    newsItem3.keyword.split('，')   ">{{ "#" + item + " "
-                                        }}</span>
+                                        <span v-for="item in newsItem3.keyword.split('，')">{{ "#" + item + " " }}</span>
                                     </div>
                                     <img :src="newsItem3.imageUrl" align="left" class="news-image" />
                                     <span class="summary">{{ newsItem3.summary }}</span>
@@ -82,8 +81,7 @@
                                         newsItem4.title
                                     }}</el-link>
                                     <div class="key-word" v-if="newsItem4.keyword">
-                                        <span v-for="(   item   ) in    newsItem4.keyword.split('，')   ">{{ "#" + item + " "
-                                        }}</span>
+                                        <span v-for="item in newsItem4.keyword.split('，')">{{ "#" + item + " " }}</span>
                                     </div>
                                     <img :src="newsItem4.imageUrl" align="left" class="news-image" />
                                     <span class="summary">{{ newsItem4.summary.substring(0, 100) }}</span>
@@ -101,8 +99,7 @@
                             <el-link type="primary" :href="newsItem5.url" class="title" target="_blank">{{ newsItem5.title
                             }}</el-link>
                             <div class="key-word" v-if="newsItem5.keyword">
-                                <span v-for="(   item   ) in    newsItem5.keyword.split('，')   ">{{ "#" + item + " "
-                                }}</span>
+                                <span v-for="item in newsItem5.keyword.split('，')">{{ "#" + item + " " }}</span>
                             </div>
                             <img :src="newsItem5.imageUrl" align="left" class="news-image" />
                             <span class="summary">{{ newsItem5.summary }}</span>
@@ -115,8 +112,7 @@
                             <el-link type="primary" :href="newsItem6.url" class="title" target="_blank">{{ newsItem6.title
                             }}</el-link>
                             <div class="key-word" v-if="newsItem6.keyword">
-                                <span v-for="(   item   ) in    newsItem6.keyword.split('，')   ">{{ "#" + item + " "
-                                }}</span>
+                                <span v-for="item in newsItem6.keyword.split('，')">{{ "#" + item + " " }}</span>
                             </div>
                             <img :src="newsItem6.imageUrl" align="left" class="news-image" />
                             <span class="summary">{{ newsItem6.summary }}</span>
@@ -129,8 +125,7 @@
                             <el-link type="primary" :href="newsItem7.url" class="title" target="_blank">{{ newsItem7.title
                             }}</el-link>
                             <div class="key-word" v-if="newsItem7.keyword">
-                                <span v-for="(   item   ) in    newsItem7.keyword.split('，')   ">{{ "#" + item + " "
-                                }}</span>
+                                <span v-for="item in newsItem7.keyword.split('，')">{{ "#" + item + " " }}</span>
                             </div>
                             <img :src="newsItem7.imageUrl" align="left" class="news-image" />
                             <span class="summary">{{ newsItem8.summary }}</span>
@@ -143,8 +138,7 @@
                             <el-link type="primary" :href="newsItem8.url" class="title" target="_blank">{{ newsItem8.title
                             }}</el-link>
                             <div class="key-word" v-if="newsItem8.keyword">
-                                <span v-for="(   item   ) in    newsItem8.keyword.split('，')   ">{{ "#" + item + " "
-                                }}</span>
+                                <span v-for="item in newsItem8.keyword.split('，')">{{ "#" + item + " " }}</span>
                             </div>
                             <img :src="newsItem8.imageUrl" align="left" class="news-image" />
                             <span class="summary">{{ newsItem8.summary }}</span>
@@ -162,7 +156,6 @@
                         {{ name }}
                     </el-tag>
                 </span>
-
                 <el-button type="primary" plain :icon="Setting" style="float: right;"
                     @click="opensSetTagDialog">设置</el-button>
             </div>
@@ -370,9 +363,8 @@ const playVideo = () => {
 
         .key-word {
             font-size: 15px;
-            color: #303133;
             margin: 10px 0;
-            font-weight: bold;
+            color: #434446;
         }
 
         .summary {

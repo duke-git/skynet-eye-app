@@ -59,8 +59,7 @@
                     <el-timeline-item v-for="(item, index) in competitorData" :key="index" type="primary" size="large"
                         :hollow="true" :timestamp="item.date" placement="bottom">
                         <div>
-                            <!-- <span class="competitor-title">{{ }}</span> -->
-                            <el-link type="primary" :href="item.url" target="_blank" style="margin-left: 30px;">
+                            <el-link type="primary" :href="item.url" target="_blank" class="competitor-title">
                                 {{ item.title }}
                             </el-link>
                             <span class="competitor-name">{{ "#" + item.department }}</span>
@@ -86,22 +85,22 @@ import AiBot from "@/components/AiBot.vue";
 
 
 const competitorData = ref([
-    {
-        id: '1',
-        date: '2023-10-01',
-        sourceLink: 'www.baidu.com',
-        title: '标题1',
-        competitorName: '阿里云',
-        summary: '动态内容总结动态内容总结动态内容总结动态内容总结',
-    },
-    {
-        id: '2',
-        date: '2023-10-02',
-        sourceLink: 'www.baidu.com',
-        competitorName: '华为云',
-        title: '标题2',
-        summary: '动态内容总结动态内容总结动态内容总结动态内容总结',
-    }
+    // {
+    //     id: '1',
+    //     date: '2023-10-01',
+    //     sourceLink: 'www.baidu.com',
+    //     title: '标题1',
+    //     competitorName: '阿里云',
+    //     summary: '动态内容总结动态内容总结动态内容总结动态内容总结',
+    // },
+    // {
+    //     id: '2',
+    //     date: '2023-10-02',
+    //     sourceLink: 'www.baidu.com',
+    //     competitorName: '华为云',
+    //     title: '标题2',
+    //     summary: '动态内容总结动态内容总结动态内容总结动态内容总结',
+    // }
 ]);
 
 let searchObj = ref({
@@ -169,9 +168,9 @@ onMounted(() => {
         margin-top: 40px;
 
         .competitor-title {
-            font-size: 16px;
+            font-size: 15px;
             display: inline-block;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
         }
 
         .competitor-name {
@@ -181,8 +180,8 @@ onMounted(() => {
 
         .competitor-summary {
             background: #f2f3f5;
-            width: 73%;
             margin-top: 4px;
+            line-height: 22px;
         }
     }
 

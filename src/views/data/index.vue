@@ -90,12 +90,13 @@ let searchObj = ref({
     hotword: "1",
     platform: "1",
 });
+
 import imageData from './image.js';
-var maskImage = new Image();
+
+let maskImage = new Image();
 maskImage.src = imageData;
 
 const initCiYunChart = () => {
-
     let ciyunChart = echarts.init(document.getElementById("ciyun-chart"))
     let chartOption = {
         series: [{
@@ -104,7 +105,7 @@ const initCiYunChart = () => {
             height: '100%', //高度
             shape: 'circle',
             keepAspect: false,
-            sizeRange: [16, 80],     //字体大小范围
+            sizeRange: [16, 70],     //字体大小范围
             rotationRange: [-90, 90],
             left: 'center',
             top: 'center',

@@ -29,7 +29,7 @@
                         }}</el-link>
                     </template>
                 </el-table-column>
-                <el-table-column prop="summary" label="总结" width="400" />
+                <el-table-column prop="summary" label="总结" />
             </el-table>
         </div>
         <AiBot />
