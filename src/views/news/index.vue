@@ -150,11 +150,17 @@
         <div class="tag-container">
             <span class="tag-title">我的关注</span>
             <div style="padding: 10px;">
-                <span v-for="   tag    in    tags   ">
-                    <el-tag v-for="   name    in    tag.names.split(',')   " :key="name" class="mx-1" closable size="large"
-                        :disable-transitions="false" @close="handleTagDelete(tag.id, name)">
+                <span v-for="tag in tags">
+                    <span v-if="tag.names.length != 0" v-for="name in tag.names.split(',')" :key="name">
+                        <el-tag v-if="name" :key="name" class="mx-1" closable size="large" :disable-transitions="false"
+                            @close="handleTagDelete(tag.id, name)">
+                            {{ name }}
+                        </el-tag>
+                    </span>
+                    <!-- <el-tag v-if="tag.names.length != 0" v-for="name in tag.names.split(',')" :key="name" class="mx-1"
+                        closable size="large" :disable-transitions="false" @close="handleTagDelete(tag.id, name)">
                         {{ name }}
-                    </el-tag>
+                    </el-tag> -->
                 </span>
                 <el-button type="primary" plain :icon="Setting" style="float: right;"
                     @click="opensSetTagDialog">设置</el-button>
@@ -289,12 +295,17 @@ let tag = ref({
 const handleTagDelete = (tagId, name) => {
     deleteNewsTag({
         id: tagId,
-        name: name
-    }).then(() => {
+        names: name
+    }).then((res) => {
         if (res.code == 200) {
             ElMessage({
                 message: '删除成功',
                 type: 'success',
+            });
+            getNewsTag().then((res1) => {
+                if (res1.code == 200) {
+                    tags.value = res1.data;
+                }
             });
         }
     });

@@ -52,3 +52,11 @@ export function getCompetitorData(param) {
         params: param
     });
 }
+
+export function getIndustryData(param) {
+    return request({
+        url: "/news/GetIndustryData",
+        method: "Get",
+        params: param
+    });
+}
