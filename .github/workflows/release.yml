@@ -4,8 +4,8 @@ name: Release
 # 指定此工作流的触发器
 on:
   push:
-    branches:
-      - master
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
  
 # 需要运行的作业组合
 jobs:
