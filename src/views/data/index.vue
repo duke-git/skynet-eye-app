@@ -10,12 +10,6 @@
             <el-row :gutter="10">
                 <el-col :span="24">
                     <div class="search-content">
-                        <!-- <span class="search-item">
-                            <label>时间: </label>
-                            <el-date-picker v-model="searchObj.date" type="daterange" range-separator="至"
-                                start-placeholder="Start date" end-placeholder="End date"
-                                style="width: 240px;vertical-align: middle;" />
-                        </span> -->
                         <span class="search-item">
                             <label>热词: </label>
                             <el-select v-model="searchObj.hotword" style="width: 140px;">

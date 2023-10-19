@@ -125,6 +125,8 @@ const menuList = reactive([
                 border-top: 1px solid #e4e7ed;
 
                 .logo-img {
+                    width: 44px;
+                    height: 44px;
                     vertical-align: middle;
                 }
 

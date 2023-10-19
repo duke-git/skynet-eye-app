@@ -14,7 +14,7 @@
                 <span class="search-item">
                     <label>关注厂商: </label>
                     <el-select v-model="searchObj.company" style="width: 120px;">
-                        <el-option label="全部" value="全部" />
+                        <el-option label="全部" value="" />
                         <el-option label="阿里云" value="阿里云" />
                         <el-option label="腾讯云" value="腾讯云" />
                         <el-option label="华为云" value="华为云" />
@@ -25,18 +25,8 @@
                     </el-select>
                 </span>
                 <span class="search-item">
-                    <label>角色: </label>
-                    <el-select v-model="searchObj.role" style="width: 140px;">
-                        <el-option label="参谋部" value="参谋部" />
-                        <el-option label="产品经理" value="产品经理" />
-                        <el-option label="研发工程师" value="研发工程师" />
-                        <el-option label="法务&专利" value="法务专利" />
-                        <el-option label="销售" value="销售" />
-                    </el-select>
-                </span>
-                <span class="search-item">
                     <label>关注产品: </label>
-                    <el-select v-model="searchObj.product" style="width: 120px;">
+                    <el-select v-model="searchObj.product" style="width: 130px;">
                         <el-option label="计算" value="1计算" />
                         <el-option label="存储" value="存储" />
                         <el-option label="网络" value="网络" />
@@ -50,7 +40,16 @@
                         <el-option label="企业应用" value="企业应用" />
                     </el-select>
                 </span>
-
+                <span class="search-item">
+                    <label>角色: </label>
+                    <el-select v-model="searchObj.role" style="width: 140px;">
+                        <el-option label="参谋部" value="参谋部" />
+                        <el-option label="产品经理" value="产品经理" />
+                        <el-option label="研发工程师" value="研发工程师" />
+                        <el-option label="法务&专利" value="法务专利" />
+                        <el-option label="销售" value="销售" />
+                    </el-select>
+                </span>
                 <el-button type="primary" @click="getCompetitor()">查询</el-button>
             </div>
 
@@ -76,6 +75,9 @@
 </template>
 
 <script setup name="news">
+
+// import 'dayjs/locale/zh-cn';
+
 import { ref, onMounted } from 'vue';
 
 import { getCompetitorData } from "@/api/api";
@@ -140,7 +142,7 @@ onMounted(() => {
         .search-item {
             font-size: 14px;
             color: #303133;
-            margin-right: 40px;
+            margin-right: 20px;
         }
     }
 
