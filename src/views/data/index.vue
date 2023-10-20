@@ -76,9 +76,7 @@ import { appWindow } from '@tauri-apps/api/window';
 const router = useRouter();
 
 let searchObj = ref({
-    // date: "",
     keyword: "",
-    // platform: "1",
 });
 
 let keywords = ref([])
@@ -141,6 +139,7 @@ const initCiYunChart = () => {
                 for (let i = 0; i < res.data.length; i++) {
                     words.push(res.data[i]);
                 };
+
                 chartOption.series[0].data = words;
                 ciyunChart.setOption(chartOption);
             }
@@ -235,7 +234,6 @@ onMounted(() => {
     getElementList().then((res) => {
         if (res.code == 200) {
             keywords.value = res.data;
-            // initCiYunChart();
         }
     });
     initCiYunChart();

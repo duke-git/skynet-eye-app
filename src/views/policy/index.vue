@@ -53,7 +53,7 @@ const policyData = ref([
 let searchObj = ref({
     keyword: "",
     date: ""
-})
+});
 
 const getPolicy = () => {
     let param = {};
@@ -99,8 +99,6 @@ onMounted(() => {
             margin-right: 40px;
         }
     }
-
-
 }
 </style>
 

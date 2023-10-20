@@ -157,13 +157,8 @@
                             {{ name }}
                         </el-tag>
                     </span>
-                    <!-- <el-tag v-if="tag.names.length != 0" v-for="name in tag.names.split(',')" :key="name" class="mx-1"
-                        closable size="large" :disable-transitions="false" @close="handleTagDelete(tag.id, name)">
-                        {{ name }}
-                    </el-tag> -->
                 </span>
-                <el-button type="primary" plain :icon="Setting" style="float: right;"
-                    @click="opensSetTagDialog">设置</el-button>
+                <el-button type="primary" plain :icon="Setting" @click="opensSetTagDialog">设置</el-button>
             </div>
         </div>
 
