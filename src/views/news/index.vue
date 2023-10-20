@@ -172,7 +172,7 @@
 
         <el-dialog v-model="setTagDialog" title="设置关键词">
             <el-form :model="tag" label-width="120px">
-                <el-form-item label="关注厂商: ">
+                <!-- <el-form-item label="关注厂商: ">
                     <el-select v-model="tag.company">
                         <el-option label="阿里云" value="阿里云" />
                         <el-option label="华为云" value="华为云" />
@@ -189,8 +189,8 @@
                         <el-option label="人工智能" value="人工智能" />
                         <el-option label="容器" value="容器" />
                     </el-select>
-                </el-form-item>
-                <el-form-item label="关注产品: ">
+                </el-form-item> -->
+                <el-form-item label="Tag名称: ">
                     <el-input v-model="tag.names" type="textarea" style="width: 300px;" placeholder="多个关键词用逗号分隔" />
                 </el-form-item>
             </el-form>
@@ -273,8 +273,8 @@ onMounted(() => {
 
 let setTagDialog = ref(false);
 let tag = ref({
-    company: '',
-    product: '',
+    // company: '',
+    // product: '',
     names: [],
 })
 
@@ -288,17 +288,14 @@ const handleTagDelete = (tagId, name) => {
                 message: '删除成功',
                 type: 'success',
             });
-            getNewsTag().then((res1) => {
-                if (res1.code == 200) {
-                    tags.value = res1.data;
-                }
-            });
+            getNewsData();
         }
     });
 }
 
 const opensSetTagDialog = () => {
     setTagDialog.value = true;
+    tag.value = { names: [] };
 };
 
 const setTag = () => {

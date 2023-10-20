@@ -1,7 +1,7 @@
 <template>
     <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" size="large">
         <el-form-item prop="username">
-            <el-input v-model="loginForm.username" placeholder="用户名">
+            <el-input v-model="loginForm.username" placeholder="用户名: ksc">
                 <template #prefix>
                     <el-icon class="el-input__icon">
                         <user />
@@ -10,7 +10,7 @@
             </el-input>
         </el-form-item>
         <el-form-item prop="password">
-            <el-input v-model="loginForm.password" type="password" placeholder="密码" show-password
+            <el-input v-model="loginForm.password" type="password" placeholder="密码: 123" show-password
                 autocomplete="new-password">
                 <template #prefix>
                     <el-icon class="el-input__icon">
@@ -57,9 +57,9 @@ const login = (formEl) => {
     formEl.validate(async valid => {
         if (!valid) return;
         // 跳转到首页
-        if (loginForm.username == "123" && loginForm.password == "123") {
+        if (loginForm.username == "ksc" && loginForm.password == "123") {
             localStorage.setItem("token", "123456");
-            localStorage.setItem("username", "测试用户");
+            localStorage.setItem("username", "ksc");
 
             router.push("/news");
 

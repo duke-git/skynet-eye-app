@@ -177,7 +177,7 @@ const initLineChart = () => {
             }
         },
         legend: {
-            data: ['百度指数']
+            data: ['热度指数']
         },
         toolbox: {
             feature: {
@@ -204,7 +204,7 @@ const initLineChart = () => {
         ],
         series: [
             {
-                name: '百度指数',
+                name: '热度指数',
                 type: 'line',
                 stack: 'Total',
                 areaStyle: {},

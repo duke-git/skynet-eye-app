@@ -69,3 +69,19 @@ export function getElementList(param) {
         params: param
     });
 }
+
+export function getFrontierNews(param) {
+    return request({
+        url: "/news/GetFrontierNews",
+        method: "Get",
+        params: param
+    });
+}
+
+export function getLearningOutcomes(param) {
+    return request({
+        url: "/news/GetLearningOutcomes",
+        method: "Get",
+        params: param
+    });
+}

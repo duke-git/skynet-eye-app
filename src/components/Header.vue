@@ -5,7 +5,7 @@
             <img src="@/assets/images/suoxiao.png" v-if="isFullscreen" @click="handleFullScreen" class="fullscreen-icon" />
         </div>
 
-        <span class="username">{{ username }}</span>
+        <span class="username">ksc</span>
 
         <el-dropdown trigger="click">
             <div class="avatar">

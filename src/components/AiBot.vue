@@ -27,5 +27,6 @@ const drawer = ref(false);
     right: 2%;
     box-shadow: 0 0 10px #808389;
     border-radius: 50%;
+    z-index: 1000;
 }
 </style>
