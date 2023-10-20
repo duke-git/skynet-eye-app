@@ -177,14 +177,6 @@
 
         <el-dialog v-model="setTagDialog" title="设置关键词">
             <el-form :model="tag" label-width="120px">
-                <el-form-item label="角色: ">
-                    <el-select v-model="tag.role">
-                        <el-option label="参谋部" value="参谋部" />
-                        <el-option label="参谋部" value="参谋部" />
-                        <el-option label="参谋部" value="参谋部" />
-                        <el-option label="运营部" value="运营部" />
-                    </el-select>
-                </el-form-item>
                 <el-form-item label="关注厂商: ">
                     <el-select v-model="tag.company">
                         <el-option label="阿里云" value="阿里云" />
@@ -286,7 +278,6 @@ onMounted(() => {
 
 let setTagDialog = ref(false);
 let tag = ref({
-    role: '',
     company: '',
     product: '',
     names: [],

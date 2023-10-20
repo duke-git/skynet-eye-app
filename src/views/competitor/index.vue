@@ -40,16 +40,6 @@
                         <el-option label="企业应用" value="企业应用" />
                     </el-select>
                 </span>
-                <span class="search-item">
-                    <label>角色: </label>
-                    <el-select v-model="searchObj.role" style="width: 140px;">
-                        <el-option label="参谋部" value="参谋部" />
-                        <el-option label="产品经理" value="产品经理" />
-                        <el-option label="研发工程师" value="研发工程师" />
-                        <el-option label="法务&专利" value="法务专利" />
-                        <el-option label="销售" value="销售" />
-                    </el-select>
-                </span>
                 <el-button type="primary" @click="getCompetitor()">查询</el-button>
             </div>
 
@@ -87,7 +77,6 @@ const competitorData = ref([]);
 
 let searchObj = ref({
     date: "",
-    role: "",
     company: "",
     product: ""
 });

@@ -85,6 +85,15 @@ const menuList = reactive([
         name: "data",
         path: "/data",
     },
+    {
+        component: "/data/aigc",
+        meta: {
+            "icon": "ScaleToOriginal",
+            "title": "AIGC专区",
+        },
+        name: "aigc",
+        path: "/aigc",
+    },
 ]);
 
 </script>

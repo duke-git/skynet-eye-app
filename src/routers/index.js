@@ -43,6 +43,15 @@ const staticRouter = [
                     keepAlive: true
                 }
             },
+            {
+                path: "/aigc",
+                name: "aigc",
+                component: () => import("@/views/aigc/index.vue"),
+                meta: {
+                    title: "AIGC专区",
+                    keepAlive: true
+                }
+            },
         ]
     },
     {

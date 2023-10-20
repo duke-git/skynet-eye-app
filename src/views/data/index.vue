@@ -12,9 +12,8 @@
                     <div class="search-content">
                         <span class="search-item">
                             <label>热词: </label>
-                            <el-select v-model="searchObj.hotword" style="width: 140px;">
-                                <el-option label="云计算" value="1" />
-                                <el-option label="云存储" value="2" />
+                            <el-select v-model="searchObj.keyword" style="width: 140px;" @change="handleKeywordChange">
+                                <el-option v-for="item in keywords" :label="item" :value="item" />
                             </el-select>
                         </span>
                     </div>
@@ -41,7 +40,7 @@
 </template>
 
 <script setup name="data">
-import { ref, onMounted, reactive } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRouter } from "vue-router";
 
 import * as echarts from 'echarts/core';
@@ -57,7 +56,7 @@ import {
 import { LineChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 
-import { getIndustryData } from "@/api/api";
+import { getIndustryData, getElementList } from "@/api/api";
 
 
 echarts.use([
@@ -77,65 +76,69 @@ import { appWindow } from '@tauri-apps/api/window';
 const router = useRouter();
 
 let searchObj = ref({
-    date: "",
-    hotword: "1",
-    platform: "1",
+    // date: "",
+    keyword: "",
+    // platform: "1",
 });
+
+let keywords = ref([])
 
 import imageData from './image.js';
 
 let maskImage = new Image();
 maskImage.src = imageData;
 
+let chartOption = {
+    series: [{
+        type: 'wordCloud',   //类型
+        width: '100%',  //宽度
+        height: '100%', //高度
+        shape: 'circle',
+        keepAspect: false,
+        sizeRange: [16, 70],     //字体大小范围
+        rotationRange: [-90, 90],
+        left: 'center',
+        top: 'center',
+        right: null,
+        bottom: null,
+        rotationStep: 45,
+        gridSize: 8,
+        maskImage: maskImage,
+
+        textStyle: {                  //随机获取样式
+            fontFamily: 'sans-serif',
+            fontWeight: 'bold',
+            color: function () {
+                // Random color
+                return 'rgb(' + [
+                    Math.round(Math.random() * 200),
+                    Math.round(Math.random() * 200),
+                    Math.round(Math.random() * 200)
+                ].join(',') + ')';
+            }
+        },
+        emphasis: {    //获得焦点时的样式
+            focus: 'self',
+            textStyle: {
+                textShadowBlur: 10,
+                textShadowColor: '#333'
+            }
+        },
+
+        // 数据必须是一个数组，数组是对象，对象必须有name和value属性
+        data: [],
+    }]
+};
+
+let ciyunChart = ref(null)
+
 const initCiYunChart = () => {
-    let ciyunChart = echarts.init(document.getElementById("ciyun-chart"))
-    let chartOption = {
-        series: [{
-            type: 'wordCloud',   //类型
-            width: '100%',  //宽度
-            height: '100%', //高度
-            shape: 'circle',
-            keepAspect: false,
-            sizeRange: [16, 70],     //字体大小范围
-            rotationRange: [-90, 90],
-            left: 'center',
-            top: 'center',
-            right: null,
-            bottom: null,
-            rotationStep: 45,
-            gridSize: 8,
-            maskImage: maskImage,
-
-            textStyle: {                  //随机获取样式
-                fontFamily: 'sans-serif',
-                fontWeight: 'bold',
-                color: function () {
-                    // Random color
-                    return 'rgb(' + [
-                        Math.round(Math.random() * 200),
-                        Math.round(Math.random() * 200),
-                        Math.round(Math.random() * 200)
-                    ].join(',') + ')';
-                }
-            },
-            emphasis: {    //获得焦点时的样式
-                focus: 'self',
-                textStyle: {
-                    textShadowBlur: 10,
-                    textShadowColor: '#333'
-                }
-            },
-
-            // 数据必须是一个数组，数组是对象，对象必须有name和value属性
-            data: [],
-        }]
-    };
-
+    ciyunChart = echarts.init(document.getElementById("ciyun-chart"));
     maskImage.onload = function () {
-        getIndustryData().then((res) => {
+        getIndustryData({ keyword: searchObj.keyword }).then((res) => {
             if (res.code == 200) {
                 let words = [];
-                for (let i = 0; i < 100; i++) {
+                for (let i = 0; i < res.data.length; i++) {
                     words.push(res.data[i]);
                 };
                 chartOption.series[0].data = words;
@@ -146,9 +149,24 @@ const initCiYunChart = () => {
 
 }
 
+const handleKeywordChange = (val) => {
+    let param = { keyword: val };
+
+    getIndustryData(param).then((res) => {
+        if (res.code == 200) {
+            let words = [];
+            for (let i = 0; i < res.data.length; i++) {
+                words.push(res.data[i]);
+            };
+            chartOption.series[0].data = words;
+            console.log("set chart")
+            ciyunChart.setOption(chartOption);
+        }
+    });
+}
+
 const initLineChart = () => {
     let lineChart = echarts.init(document.getElementById("line-chart"))
-
     let chartOption = {
         tooltip: {
             trigger: 'axis',
@@ -202,6 +220,7 @@ const initLineChart = () => {
     lineChart.setOption(chartOption);
 }
 
+
 const goHomePage = async () => {
     router.push('/news');
     await appWindow.setFullscreen(false);
@@ -213,6 +232,12 @@ const fullScreen = async () => {
 
 
 onMounted(() => {
+    getElementList().then((res) => {
+        if (res.code == 200) {
+            keywords.value = res.data;
+            // initCiYunChart();
+        }
+    });
     initCiYunChart();
     initLineChart();
     fullScreen();

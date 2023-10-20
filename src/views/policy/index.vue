@@ -7,7 +7,7 @@
             <div class="search-content" style="">
                 <span class="search-item">
                     <label>关键词: </label>
-                    <el-input v-model="searchObj.keyword" style="width: 300px;" placeholder="试试搜索: 信创"
+                    <el-input v-model="searchObj.keyword" style="width: 300px;" placeholder="试试搜索: 云计算"
                         @change="getPolicy()" />
                 </span>
                 <span class="search-item">

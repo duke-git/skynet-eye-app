@@ -60,3 +60,12 @@ export function getIndustryData(param) {
         params: param
     });
 }
+
+
+export function getElementList(param) {
+    return request({
+        url: "/news/GetElementList",
+        method: "Get",
+        params: param
+    });
+}
