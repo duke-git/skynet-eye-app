@@ -58,16 +58,16 @@
                             </span>
                         </div>
                         <el-table :data="learningOutcomes" stripe style="width: 100%">
-                            <el-table-column prop="date" label="时间" width="140" />
-                            <el-table-column prop="title" label="标题" width="220">
+                            <el-table-column prop="date" label="时间" width="120" />
+                            <el-table-column prop="title" label="标题" width="160">
                                 <template #default="scope">
                                     <el-link type="primary" :href="scope.row.url" target="_blank">{{ scope.row.title
                                     }}</el-link>
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="author" label="论文作者" width="220" />
-                            <el-table-column prop="keyword" label="关键词" width="220" />
-                            <el-table-column prop="summary" label="论文总结" />
+                            <el-table-column prop="author" label="论文作者" width="160" />
+                            <el-table-column prop="keyword" label="关键词" width="160" />
+                            <el-table-column prop="summary" label="论文总结" width="460" />
                         </el-table>
                     </div>
                 </el-tab-pane>

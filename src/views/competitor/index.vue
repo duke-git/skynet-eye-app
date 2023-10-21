@@ -27,17 +27,8 @@
                 <span class="search-item">
                     <label>关注产品: </label>
                     <el-select v-model="searchObj.product" style="width: 130px;">
-                        <el-option label="计算" value="1计算" />
-                        <el-option label="存储" value="存储" />
-                        <el-option label="网络" value="网络" />
-                        <el-option label="数据库" value="数据库" />
-                        <el-option label="容器与中间件" value="容器与中间件" />
-                        <el-option label="安全" value="安全" />
-                        <el-option label="边缘云" value="边缘云" />
-                        <el-option label="视频云" value="视频云" />
-                        <el-option label="大数据" value="大数据" />
-                        <el-option label="人工智能与算法" value="人工智能与算法" />
-                        <el-option label="企业应用" value="企业应用" />
+                        <el-option label="全部" value="" />
+                        <el-option v-for="item in products" :label="item" :value="item" />
                     </el-select>
                 </span>
                 <el-button type="primary" @click="getCompetitor()">查询</el-button>
@@ -66,11 +57,10 @@
 
 <script setup name="news">
 
-// import 'dayjs/locale/zh-cn';
 
 import { ref, onMounted } from 'vue';
 
-import { getCompetitorData } from "@/api/api";
+import { getCompetitorData, getElementList } from "@/api/api";
 import AiBot from "@/components/AiBot.vue";
 
 const competitorData = ref([]);
@@ -81,6 +71,7 @@ let searchObj = ref({
     product: ""
 });
 
+let products = ref([]);
 
 const getCompetitor = () => {
     let param = {};
@@ -110,6 +101,11 @@ const getCompetitor = () => {
 };
 
 onMounted(() => {
+    getElementList().then((res) => {
+        if (res.code == 200) {
+            products.value = res.data;
+        }
+    });
     getCompetitor();
 });
 

@@ -30,9 +30,6 @@
         "icons/icon.ico"
       ]
     },
-    "security": {
-      "csp": null
-    },
     "windows": [
       {
         "fullscreen": false,
