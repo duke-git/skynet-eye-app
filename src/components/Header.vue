@@ -1,9 +1,9 @@
 <template>
     <div class="tool-bar-ri">
-        <div class="fullscreen">
+        <!-- <div class="fullscreen">
             <img src="@/assets/images/fangda.png" v-if="!isFullscreen" @click="handleFullScreen" class="fullscreen-icon" />
             <img src="@/assets/images/suoxiao.png" v-if="isFullscreen" @click="handleFullScreen" class="fullscreen-icon" />
-        </div>
+        </div> -->
 
         <span class="username">ksc</span>
 
