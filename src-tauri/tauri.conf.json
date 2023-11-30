@@ -16,7 +16,17 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "protocol": {
+        "all": true,
+        "asset": true,
+        "assetScope": [
+          "**"
+        ]
       }
+    },
+    "security": {
+      "csp": "default-src 'self'; media-src 'self' asset: https://asset.localhost;"
     },
     "bundle": {
       "active": true,
