@@ -6,7 +6,32 @@
         </div>
 
         <div class="news-continer">
-            <el-row :gutter="10">
+            <div style="padding: 20px;">
+                <div class="search-content">
+                    <!-- <span class="search-item">
+                        <label>关键词: </label>
+                        <el-input v-model="searchObj.keyword1" style="width: 300px;" placeholder="查询AIGC相关新闻消息，试试搜索: 训练效率"
+                            @change="getNewsData" />
+                    </span> -->
+                </div>
+                <el-row :gutter="10">
+                    <el-col :span="6" v-for="item in newsList">
+                        <el-card :body-style="{ padding: '14px' }" style="margin-bottom: 20px;">
+                            <div class="news-content">
+                                <el-link type="primary" :href="item.url" class="title" target="_blank">{{ item.title
+                                }}</el-link>
+                                <div class="key-word" v-if="item.keyword">
+                                    <span v-for="word in item.keyword.split('，')">{{ "#" + word + " " }}</span>
+                                </div>
+                                <img :src="item.imageUrl" align="left" class="news-image" />
+                                <span class="summary">{{ item.summary }}</span>
+                            </div>
+                        </el-card>
+                    </el-col>
+                </el-row>
+            </div>
+
+            <!-- <el-row :gutter="10">
                 <el-col :span="12">
                     <el-row :gutter="10">
                         <el-col :span="24">
@@ -145,7 +170,7 @@
                         </div>
                     </el-card>
                 </el-col>
-            </el-row>
+            </el-row> -->
         </div>
         <div class="tag-container">
             <span class="tag-title">我的关注</span>
@@ -218,15 +243,17 @@ import AiBot from "@/components/AiBot.vue";
 
 import { getNewsList, getNewsTag, setNewsTag, deleteNewsTag } from "@/api/api";
 
-let newsItem1 = ref({ summary: "" });
-let newsItem2 = ref({ summary: "" });
-let newsItem3 = ref({ summary: "" });
-let newsItem4 = ref({ summary: "" });
-let newsItem5 = ref({ summary: "" });
-let newsItem6 = ref({ summary: "" });
-let newsItem7 = ref({ summary: "" });
-let newsItem8 = ref({ summary: "" });
-let newsItem9 = ref({ summary: "" });
+// let newsItem1 = ref({ summary: "" });
+// let newsItem2 = ref({ summary: "" });
+// let newsItem3 = ref({ summary: "" });
+// let newsItem4 = ref({ summary: "" });
+// let newsItem5 = ref({ summary: "" });
+// let newsItem6 = ref({ summary: "" });
+// let newsItem7 = ref({ summary: "" });
+// let newsItem8 = ref({ summary: "" });
+// let newsItem9 = ref({ summary: "" });
+
+let newsList = ref([]);
 
 let tags = ref([
     { id: "xx", names: 'tag1' },
@@ -238,15 +265,18 @@ const getNewsData = () => {
     getNewsList().then((res) => {
         if (res.code == 200) {
             let data = res.data;
-            newsItem1.value = data[0];
-            newsItem2.value = data[1];
-            newsItem3.value = data[2];
-            newsItem4.value = data[3];
-            newsItem5.value = data[4];
-            newsItem6.value = data[5];
-            newsItem7.value = data[6];
-            newsItem8.value = data[7];
-            newsItem9.value = data[8];
+
+            newsList.value = data || [];
+
+            // newsItem1.value = data[0];
+            // newsItem2.value = data[1];
+            // newsItem3.value = data[2];
+            // newsItem4.value = data[3];
+            // newsItem5.value = data[4];
+            // newsItem6.value = data[5];
+            // newsItem7.value = data[6];
+            // newsItem8.value = data[7];
+            // newsItem9.value = data[8];
 
             let videos = [];
             data.forEach((item) => {
