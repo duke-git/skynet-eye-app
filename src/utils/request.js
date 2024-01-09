@@ -4,7 +4,7 @@ import { ElMessage } from 'element-plus';
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://36.103.167.150:8080',
+    baseURL: 'http://36.103.167.27:9099',
     timeout: 5000 // 超时时间
 });
 

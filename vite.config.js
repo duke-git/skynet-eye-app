@@ -35,7 +35,7 @@ export default defineConfig(async () => ({
     cors: true,
     proxy: {
       "/api/": {
-        target: "http://36.103.167.150:8080",
+        target: "http://36.103.167.27:9099",
         changeOrigin: true,
         ws: true,
         rewrite: (path) => path.replace(/^\/api/, '')

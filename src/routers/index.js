@@ -1,5 +1,8 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
+import { getUserInfo, login } from "@/api/api";
+
+import { ElMessageBox, ElMessage } from "element-plus";
 
 const staticRouter = [
     {
@@ -58,15 +61,15 @@ const staticRouter = [
         path: "/",
         redirect: "/news"
     },
-    {
-        path: "/login",
-        name: "login",
-        component: () => import("@/views/login/index.vue"),
-        meta: {
-            title: "登录",
-            keepAlive: false
-        }
-    },
+    // {
+    //     path: "/login",
+    //     name: "login",
+    //     component: () => import("@/views/login/index.vue"),
+    //     meta: {
+    //         title: "登录",
+    //         keepAlive: false
+    //     }
+    // },
     {
         path: "/data",
         name: "data",
@@ -89,14 +92,25 @@ const router = createRouter({
  * @description 路由拦截 beforeEach
  * */
 router.beforeEach(async (to, from, next) => {
-    if (to.path.toLocaleLowerCase() === "/login") {
-        return next();
+    let token = localStorage.getItem('oidc_token')
+    if (!token) {
+        // next({ path: '/login' });
+        login().then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.log(err);
+            // ElMessage.success("err");
+        });
+    } else {
+        next();
     }
 
-    let token = localStorage.getItem('token')
-    if (token !== "123456") {
-        next({ path: '/login' });
-    }
+    // getUserInfo().then((res) => {
+
+    // }).catch((err) => {
+    //     ElMessage.success("err");
+    //     window.location.replace('/login/logout');
+    // });
 
     next();
 });

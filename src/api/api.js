@@ -85,3 +85,28 @@ export function getLearningOutcomes(param) {
         params: param
     });
 }
+
+
+export function getUserInfo(param) {
+    return request({
+        url: "/user/info",
+        method: "Get",
+        params: param
+    });
+}
+
+export function login(param) {
+    return request({
+        url: "/login/login",
+        method: "Get",
+        params: param,
+    });
+}
+
+export function logout(param) {
+    return request({
+        url: "/login/Logout",
+        method: "Get",
+        params: param
+    });
+}

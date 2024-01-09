@@ -13,7 +13,7 @@
             </div>
             <template #dropdown>
                 <el-dropdown-menu>
-                    <el-dropdown-item divided @click="logout">
+                    <el-dropdown-item divided @click="logoutApp">
                         <el-icon>
                             <SwitchButton />
                         </el-icon>{{ "退出登陆" }}
@@ -27,6 +27,8 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
+
+import { getUserInfo, logout } from "@/api/api";
 
 import { ElMessageBox, ElMessage } from "element-plus";
 // import screenfull from "screenfull";
@@ -64,7 +66,7 @@ const handleFullScreen = async () => {
 };
 
 
-const logout = () => {
+const logoutApp = () => {
     ElMessageBox.confirm("您是否确认退出登录?", "温馨提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
@@ -73,8 +75,14 @@ const logout = () => {
         localStorage.setItem("token", "");
         localStorage.setItem("username", "");
 
-        router.replace("/login");
-        ElMessage.success("退出登录成功！");
+        // router.replace("/login");
+        // ElMessage.success("退出登录成功！");
+        localStorage.removeItem("username");
+        localStorage.removeItem("oidc_token");
+        logout().then((res) => {
+            console.log(res);
+        })
+        // window.location.replace('/login/Logout');
     });
 };
 
@@ -87,7 +95,6 @@ const logout = () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    // padding-right: 25px;
     float: right;
 
     .fullscreen-icon {
