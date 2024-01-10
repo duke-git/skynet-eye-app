@@ -176,7 +176,7 @@
             <span class="tag-title">我的关注</span>
             <div style="padding: 10px;">
                 <span v-for="tag in tags">
-                    <span v-if="tag.names.length != 0" v-for="name in tag.names.split(',')" :key="name">
+                    <span v-if="tag.name" v-for="name in tag.name.split(',')" :key="name">
                         <el-tag v-if="name" :key="name" class="mx-1" closable size="large" :disable-transitions="false"
                             @close="handleTagDelete(tag.id, name)">
                             {{ name }}
