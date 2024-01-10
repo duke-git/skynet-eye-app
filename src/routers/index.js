@@ -92,18 +92,18 @@ const router = createRouter({
  * @description 路由拦截 beforeEach
  * */
 router.beforeEach(async (to, from, next) => {
-    let token = localStorage.getItem('oidc_token')
-    if (!token) {
-        // next({ path: '/login' });
-        login().then((res) => {
-            console.log(res);
-        }).catch((err) => {
-            console.log(err);
-            // ElMessage.success("err");
-        });
-    } else {
-        next();
-    }
+    // let token = localStorage.getItem('oidc_token')
+    // if (!token) {
+    //     // next({ path: '/login' });
+    //     login().then((res) => {
+    //         console.log(res);
+    //     }).catch((err) => {
+    //         console.log(err);
+    //         // ElMessage.success("err");
+    //     });
+    // } else {
+    //     next();
+    // }
 
     // getUserInfo().then((res) => {
 

@@ -12,13 +12,13 @@
                 <img src="@/assets/images/avatar.gif" alt="avatar" />
             </div>
             <template #dropdown>
-                <el-dropdown-menu>
+                <!-- <el-dropdown-menu>
                     <el-dropdown-item divided @click="logoutApp">
                         <el-icon>
                             <SwitchButton />
                         </el-icon>{{ "退出登陆" }}
                     </el-dropdown-item>
-                </el-dropdown-menu>
+                </el-dropdown-menu> -->
             </template>
         </el-dropdown>
     </div>
